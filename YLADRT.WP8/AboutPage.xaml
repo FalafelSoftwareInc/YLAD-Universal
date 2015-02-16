@@ -1,0 +1,33 @@
+﻿<Page x:Class="YLADRT.WindowsPhone.AboutPage"
+	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                      xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+                                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                                      xmlns:viewModels="using:YLADRT.Shared.ViewModel"
+                                      xmlns:views="using:YLADRT.WindowsPhone.Views"
+                                      mc:Ignorable="d"
+                                      d:DesignWidth="480"
+                                      d:DesignHeight="800">    
+    <Page.DataContext>
+		<viewModels:AboutViewModel />
+	</Page.DataContext>
+
+	<Page.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="Content/About/AboutStyles.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Page.Resources>
+
+	<ContentControl x:Name="StylesRoot">
+        <!--LayoutRoot is the root grid where all page content is placed-->    
+        <Grid x:Name="LayoutRoot">
+			<Grid>
+				<Pivot x:Name="PivotControl" Title="{Binding ApplicationTitleUpper}" />
+			</Grid>
+		</Grid>
+    </ContentControl>
+
+</Page>

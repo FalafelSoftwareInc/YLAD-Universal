@@ -1,0 +1,121 @@
+﻿<SettingsFlyout
+    x:Class="YLADRT.Windows.AboutFlyout"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:YLADRT.Windows"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:viewModels="using:YLADRT.Shared.ViewModel"
+	xmlns:common="using:YLADRT.Shared.Common" 
+    mc:Ignorable="d"
+    IconSource="Assets/SmallLogo.png"
+	d:DataContext="{StaticResource AboutViewModel}"
+    Title="AboutFlyout"
+    d:DesignWidth="346">
+	<SettingsFlyout.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="Content/About/AboutStyles.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+
+
+			<common:StringToVisibilityConverter x:Key="StringToVisibilityConverter" />
+			
+		</ResourceDictionary>
+	</SettingsFlyout.Resources>
+
+	<!-- This StackPanel acts as a root panel for vertical layout of the content sections -->
+    <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+
+        <!-- The StackPanel(s) below define individual content sections -->
+
+        <!-- Content Section 1-->
+        <StackPanel Style="{StaticResource SettingsFlyoutSectionStyle}">
+
+            <!-- Section 1 header -->
+			<TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ApplicationTitleUpper}" />
+
+            <!-- Section 1 body -->
+			<StackPanel Margin="0,0,0,24">
+				<StackPanel Margin="0, 15, 5, 0"
+                        Visibility="{Binding ApplicationAuthor, Converter={StaticResource StringToVisibilityConverter}}" HorizontalAlignment="Left">
+					<TextBlock Style="{StaticResource AboutTextSubTitleStyle}"
+                           Margin="0"
+                           Text="{Binding MainItemData.AppAuthorLabel}" HorizontalAlignment="Left" />
+					<TextBlock Style="{StaticResource AboutTextSubTitleStyle}"
+                           Margin="0,5,0,15"
+                           Text="{Binding ApplicationAuthor}" />
+				</StackPanel>
+
+				<StackPanel Margin="0, 15, 5, 0"
+                        Visibility="{Binding ApplicationPublisher, Converter={StaticResource StringToVisibilityConverter}}">
+					<TextBlock Style="{StaticResource AboutTextNormalStyle}"
+                           Margin="0"
+                           Text="{Binding MainItemData.AppPublisherLabel}" />
+					<TextBlock Style="{StaticResource AboutTextNormalStyle}"
+                           Margin="0,5,0,15"
+                           Text="{Binding ApplicationPublisher}" />
+				</StackPanel>
+
+				<Grid Margin="0, 15, 5, 0"
+                  Visibility="{Binding ApplicationDescription, Converter={StaticResource StringToVisibilityConverter}}">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+					<TextBlock Style="{StaticResource AboutTextNormalStyle}"
+                           Margin="0"
+                           Text="{Binding MainItemData.AppDescriptionLabel}" />
+					<TextBlock Grid.Column="1"
+                           Style="{StaticResource AboutTextNormalStyle}"
+                           Margin="0,5,0,15"
+                           Text="{Binding ApplicationDescription}"
+                           TextWrapping="Wrap" />
+				</Grid>
+
+				<StackPanel Margin="0, 15, 5, 0"
+                        Visibility="{Binding ApplicationVersion, Converter={StaticResource StringToVisibilityConverter}}">
+					<TextBlock Style="{StaticResource AboutTextNormalStyle}"
+                           Margin="0"
+                           Text="{Binding MainItemData.AppVersionLabel}" FontFamily="Global User Interface" />
+					<TextBlock Style="{StaticResource AboutTextNormalHighlightedStyle}"
+                           Margin="0,5,0,15"
+                           Text="{Binding ApplicationVersion}" />
+				</StackPanel>
+
+				<ItemsControl ItemsSource="{Binding Links}">
+					<ItemsControl.ItemTemplate>
+						<DataTemplate>
+							<StackPanel  Margin="0, 15, 5, 0">
+								<TextBlock Text="{Binding Label}"
+                                       Style="{StaticResource AboutTextNormalStyle}"
+									   Margin="0"
+                                       VerticalAlignment="Center" />
+								<HyperlinkButton NavigateUri="{Binding NavigateUri}"
+                                             HorizontalAlignment="Left"
+                                             Margin="0,5,0,15"
+                                             Padding="0"
+                                             Style="{StaticResource AboutHyperlinkButtonStyle}"
+                                             Content="{Binding Content}" FontFamily="Global User Interface" />
+							</StackPanel>
+						</DataTemplate>
+					</ItemsControl.ItemTemplate>
+				</ItemsControl>
+				
+				<TextBlock Style="{StaticResource AboutTextNormalStyle}"
+                       Visibility="{Binding AdditionalNotes, Converter={StaticResource StringToVisibilityConverter}}"
+                       Margin="0,5,0,15"
+                       Text="{Binding MainItemData.AppAdditionalNotesLabel}" />
+				<TextBlock Style="{StaticResource AboutTextNormalStyle}"
+                       Visibility="{Binding AdditionalNotes, Converter={StaticResource StringToVisibilityConverter}}"
+                       Margin="0,5,0,15"
+                       TextWrapping="Wrap"
+                       Text="{Binding AdditionalNotes}" />
+			</StackPanel>
+
+		</StackPanel>
+
+        <!-- Define more Content Sections below as necessary -->
+
+    </StackPanel>
+</SettingsFlyout>
