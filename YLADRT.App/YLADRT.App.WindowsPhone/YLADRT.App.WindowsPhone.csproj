@@ -81,10 +81,6 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <ProjectReference Include="..\..\YLADRT.Shared\YLADRT.Shared.csproj">
-      <Project>{e6f9be27-89e9-4feb-9c76-6fd282b18fc6}</Project>
-      <Name>YLADRT.Shared</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\YLADRT.WP8\YLADRT.WindowsPhone.csproj">
       <Project>{e603c004-79fd-4491-a499-1b8fdafddc55}</Project>
       <Name>YLADRT.WindowsPhone</Name>

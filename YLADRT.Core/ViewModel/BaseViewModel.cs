@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 
-namespace YLADRT.Shared.ViewModel
+namespace YLADRT.Core.ViewModel
 {
 	/// <summary>
 	/// A simple base class for view models that implements the <c>INotifyPropertyChanged</c> interface.

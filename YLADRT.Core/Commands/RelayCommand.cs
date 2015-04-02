@@ -3,7 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Windows.Input;
 
-namespace YLADRT.Shared.Commands
+namespace YLADRT.Core.Commands
 {
 	/// <summary>
 	/// A simple relay command implementation of <c>ICommand</c>.

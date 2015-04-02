@@ -4,7 +4,7 @@
                                       xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
                                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                                      xmlns:viewModels="using:YLADRT.Shared.ViewModel"
+                                      xmlns:viewModels="using:YLADRT.Core.ViewModel"
                                       xmlns:views="using:YLADRT.WindowsPhone.Views"
                                       mc:Ignorable="d"
                                       d:DesignWidth="480"

@@ -1,25 +1,17 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
 using System.Linq;
-using System.Windows;
-using System.Xml;
-using System.Xml.Linq;
-using Windows.ApplicationModel.Resources;
-using YLADRT.Shared.Commands;
-using YLADRT.Shared.Common;
-using YLADRT.WindowsPhone.Models;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Navigation;
-using Windows.ApplicationModel.Store;
-using Windows.ApplicationModel;
 using System.Threading.Tasks;
-using Windows.Storage.Streams;
+using System.Xml.Linq;
+using Windows.ApplicationModel;
+using Windows.ApplicationModel.Store;
 using Windows.Storage;
-using Windows.UI.Popups;
+using Windows.UI.Xaml;
+using YLADRT.Core.Commands;
+using YLADRT.Core.Common;
+using YLADRT.Core.Models;
 
-namespace YLADRT.Shared.ViewModel
+namespace YLADRT.Core.ViewModel
 {
 	/// <summary>
 	/// A view model for the about page and its items.
@@ -291,11 +283,7 @@ namespace YLADRT.Shared.ViewModel
 		/// <summary>
 		/// Gets the command that wraps the review application operation.
 		/// </summary>
-		public RelayCommand ReviewCommand
-		{
-			get;
-			private set;
-		}
+		public RelayCommand ReviewCommand { get; private set; }
 
 		private async void Review()
 		{
@@ -323,6 +311,7 @@ namespace YLADRT.Shared.ViewModel
 				ReviewCommand.RaiseCanExecuteChanged();
 			}
 		}
+
 		private bool IsReviewAllowed()
 		{
 			return isReviewAllowed;
@@ -335,11 +324,7 @@ namespace YLADRT.Shared.ViewModel
 		/// <summary>
 		/// Gets the command that wraps the buy application operation.
 		/// </summary>
-		public RelayCommand BuyCommand
-		{
-			get;
-			private set;
-		}
+		public RelayCommand BuyCommand { get; private set; }
 
 		/// <summary>
 		/// Gets or sets whether the buy options in the UI should be visible or not.
@@ -467,7 +452,6 @@ namespace YLADRT.Shared.ViewModel
 				
 				var text = await FileIO.ReadTextAsync(sri);
 				LoadFromStreamResourceInfo(text);
-				
 				// TODO: Localization?
 			}
 			catch (Exception ex)
@@ -623,7 +607,7 @@ namespace YLADRT.Shared.ViewModel
 				return value;
 			}
 		}
-
+		
 		#endregion
 	}
 }

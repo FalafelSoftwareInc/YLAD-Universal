@@ -1,6 +1,6 @@
 ﻿using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using YLADRT.Shared.ViewModel;
+using YLADRT.Core.ViewModel;
 
 namespace YLADRT.WindowsPhone.Views
 {

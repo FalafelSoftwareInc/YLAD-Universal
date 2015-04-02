@@ -1,7 +1,6 @@
 ﻿using System;
-using YLADRT.Shared.Commands;
 
-namespace YLADRT.Shared.Commands
+namespace YLADRT.Core.Commands
 {
 	/// <summary>
 	/// A convenient class of a relay command that takes no parameters.
@@ -12,8 +11,7 @@ namespace YLADRT.Shared.Commands
 		/// Initializes a new instance of the <see cref="RelayCommand"/> class.
 		/// </summary>
 		/// <param name="commandAction">The action to relay the command to.</param>
-		public RelayCommand(Action commandAction)
-			: base(o => commandAction())
+		public RelayCommand(Action commandAction) : base(o => commandAction())
 		{
 		}
 
@@ -22,8 +20,7 @@ namespace YLADRT.Shared.Commands
 		/// </summary>
 		/// <param name="commandAction">The action to relay the command to.</param>
 		/// <param name="canExecuteFunc">The function to execute to determine whether the command can be executed or not.</param>
-		public RelayCommand(Action commandAction, Func<bool> canExecuteFunc)
-			: base(o => commandAction(), o => canExecuteFunc())
+		public RelayCommand(Action commandAction, Func<bool> canExecuteFunc) : base(o => commandAction(), o => canExecuteFunc())
 		{
 		}
 	}

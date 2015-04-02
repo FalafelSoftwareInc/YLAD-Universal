@@ -6,7 +6,7 @@ using Windows.UI.Xaml;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using YLADRT.Shared.ViewModel;
+using YLADRT.Core.ViewModel;
 using YLADRT.WindowsPhone.Views;
 
 namespace YLADRT.WindowsPhone
