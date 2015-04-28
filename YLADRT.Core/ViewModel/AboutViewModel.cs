@@ -413,6 +413,9 @@ namespace YLADRT.Core.ViewModel
 
 			MainItemData = new MainItemData();
 			MainItemData.AppAuthorLabel = "Application Author";
+			MainItemData.AppPublisherLabel = "Publisher";
+
+			RaisePropertyChanged("MainItemData");
 		}
 
 		#region Processing of Data.xml
@@ -526,6 +529,7 @@ namespace YLADRT.Core.ViewModel
 			MainItemData.AppReviewButtonContent = GetAttributeValue(itemElement, AttributeAppReviewButtonContent) ?? "Review this app!";
 			MainItemData.AppBuyButtonContent = GetAttributeValue(itemElement, AttributeAppBuyButtonContent) ?? "Buy this app!";
 
+			RaisePropertyChanged("MainItemData");
 			// load all links
 			var linkElements = itemElement.Descendants(ElementLink);
 			foreach (var linkElement in linkElements)

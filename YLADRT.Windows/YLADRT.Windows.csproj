@@ -119,6 +119,12 @@
   <ItemGroup>
     <Content Include="Content\About\Data.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\YLADRT.Core\YLADRT.Core.csproj">
+      <Project>{e6f9be27-89e9-4feb-9c76-6fd282b18fc6}</Project>
+      <Name>YLADRT.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
   </PropertyGroup>

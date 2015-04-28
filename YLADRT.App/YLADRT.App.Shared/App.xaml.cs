@@ -7,6 +7,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -15,6 +16,11 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
+
+#if WINDOWS_APP
+using YLADRT.Windows;
+using Windows.UI.ApplicationSettings;
+#endif
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
 
@@ -52,6 +58,28 @@ namespace YLADRT.App
             {
                 this.DebugSettings.EnableFrameRateCounter = true;
             }
+#endif
+
+#if WINDOWS_APP
+			// Add commands to the settings pane
+			SettingsPane.GetForCurrentView().CommandsRequested += (s, args) =>
+			{
+				//var setting = new SettingsCommand("Settings", "Settings", handler =>
+				//new Settings().Show());
+				//args.Request.ApplicationCommands.Add(setting);
+
+				//var feedback = new SettingsCommand("Feedback", "Feedback", handler =>
+				//	new Feedback().Show());
+				//args.Request.ApplicationCommands.Add(feedback);
+
+				var about = new SettingsCommand("About", "About", handler =>
+					new AboutFlyout().Show());
+				args.Request.ApplicationCommands.Add(about);
+
+				//var privacy = new SettingsCommand("Privacy", "Privacy", handler =>
+				//	new Privacy().Show());
+				//args.Request.ApplicationCommands.Add(privacy);
+			};
 #endif
 
             Frame rootFrame = Window.Current.Content as Frame;

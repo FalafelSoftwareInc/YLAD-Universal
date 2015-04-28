@@ -95,6 +95,7 @@ namespace YLADRT.Core.Common
 				var xname = XNamespace.Get("http://schemas.microsoft.com/appx/2010/manifest");
 				var mp = XNamespace.Get("http://schemas.microsoft.com/appx/2014/phone/manifest");
 				var m3 = XNamespace.Get("http://schemas.microsoft.com/appx/2014/manifest");
+				var m2 = XNamespace.Get("http://schemas.microsoft.com/appx/2013/manifest");
 
 				// extract data from the various elements in the xml
 				var packageElement = doc.Descendants(xname + "Package").FirstOrDefault();
@@ -147,6 +148,7 @@ namespace YLADRT.Core.Common
 					return;
 
 				var visElement = appElement.Descendants(m3 + "VisualElements").FirstOrDefault();
+				if (visElement == null) visElement = appElement.Descendants(m2 + "VisualElements").FirstOrDefault();
 				if (visElement != null)
 				{
 					// get all attributes

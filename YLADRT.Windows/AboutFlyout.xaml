@@ -10,7 +10,7 @@
     mc:Ignorable="d"
     IconSource="Assets/SmallLogo.png"
 	d:DataContext="{StaticResource AboutViewModel}"
-    Title="AboutFlyout"
+    Title="About"
     d:DesignWidth="346">
 	<SettingsFlyout.Resources>
 		<ResourceDictionary>
@@ -57,12 +57,8 @@
                            Text="{Binding ApplicationPublisher}" />
 				</StackPanel>
 
-				<Grid Margin="0, 15, 5, 0"
+				<StackPanel Margin="0, 15, 5, 0"
                   Visibility="{Binding ApplicationDescription, Converter={StaticResource StringToVisibilityConverter}}">
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="Auto" />
-						<ColumnDefinition Width="*" />
-					</Grid.ColumnDefinitions>
 					<TextBlock Style="{StaticResource AboutTextNormalStyle}"
                            Margin="0"
                            Text="{Binding MainItemData.AppDescriptionLabel}" />
@@ -71,7 +67,7 @@
                            Margin="0,5,0,15"
                            Text="{Binding ApplicationDescription}"
                            TextWrapping="Wrap" />
-				</Grid>
+				</StackPanel>
 
 				<StackPanel Margin="0, 15, 5, 0"
                         Visibility="{Binding ApplicationVersion, Converter={StaticResource StringToVisibilityConverter}}">
