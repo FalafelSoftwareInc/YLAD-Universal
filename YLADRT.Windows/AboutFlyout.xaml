@@ -17,10 +17,7 @@
 			<ResourceDictionary.MergedDictionaries>
 				<ResourceDictionary Source="Content/About/AboutStyles.xaml" />
 			</ResourceDictionary.MergedDictionaries>
-
-
 			<common:StringToVisibilityConverter x:Key="StringToVisibilityConverter" />
-			
 		</ResourceDictionary>
 	</SettingsFlyout.Resources>
 
@@ -33,7 +30,7 @@
         <StackPanel Style="{StaticResource SettingsFlyoutSectionStyle}">
 
             <!-- Section 1 header -->
-			<TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ApplicationTitleUpper}" />
+			<TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding ApplicationTitle}" />
 
             <!-- Section 1 body -->
 			<StackPanel Margin="0,0,0,24">
@@ -64,7 +61,7 @@
                            Text="{Binding MainItemData.AppDescriptionLabel}" />
 					<TextBlock Grid.Column="1"
                            Style="{StaticResource AboutTextNormalStyle}"
-                           Margin="0,5,0,15"
+                           Margin="0,5,0,0"
                            Text="{Binding ApplicationDescription}"
                            TextWrapping="Wrap" />
 				</StackPanel>
@@ -89,10 +86,10 @@
                                        VerticalAlignment="Center" />
 								<HyperlinkButton NavigateUri="{Binding NavigateUri}"
                                              HorizontalAlignment="Left"
-                                             Margin="0,5,0,15"
+                                             Margin="0,0,0,15"
                                              Padding="0"
                                              Style="{StaticResource AboutHyperlinkButtonStyle}"
-                                             Content="{Binding Content}" FontFamily="Global User Interface" />
+                                             Content="{Binding Content}" FontFamily="Global User Interface" FontSize="12" />
 							</StackPanel>
 						</DataTemplate>
 					</ItemsControl.ItemTemplate>
@@ -100,7 +97,7 @@
 				
 				<TextBlock Style="{StaticResource AboutTextNormalStyle}"
                        Visibility="{Binding AdditionalNotes, Converter={StaticResource StringToVisibilityConverter}}"
-                       Margin="0,5,0,15"
+                       Margin="0,5,0,0"
                        Text="{Binding MainItemData.AppAdditionalNotesLabel}" />
 				<TextBlock Style="{StaticResource AboutTextNormalStyle}"
                        Visibility="{Binding AdditionalNotes, Converter={StaticResource StringToVisibilityConverter}}"
