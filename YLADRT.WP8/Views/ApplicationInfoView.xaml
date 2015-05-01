@@ -20,74 +20,81 @@
 	</UserControl.Resources>
 
 	<ScrollViewer HorizontalScrollBarVisibility="Disabled">
-		<StackPanel Margin="0,0,0,24">
+		<StackPanel>
 			<TextBlock Style="{StaticResource AboutTextTitleStyle}"
+					   Margin="0 0 12 0"
                        Visibility="{Binding ApplicationTitle, Converter={StaticResource StringToVisibilityConverter}}"
                        Text="{Binding ApplicationTitle}" />
 
 			<StackPanel Orientation="Horizontal"
                         Visibility="{Binding ApplicationAuthor, Converter={StaticResource StringToVisibilityConverter}}">
 				<TextBlock Style="{StaticResource AboutTextSubTitleStyle}"
-                           Margin="12 0 5 0"
+                           Margin="0 3 6 0" FontSize="{StaticResource TextStyleMediumFontSize}" 
                            Text="{Binding MainItemData.AppAuthorLabel}" />
 				<TextBlock Style="{StaticResource AboutTextSubTitleStyle}"
-                           Margin="0"
+                           Margin="0,3,0,0" FontSize="{StaticResource TextStyleMediumFontSize}" 
                            Text="{Binding ApplicationAuthor}" />
 			</StackPanel>
 
-			<StackPanel Orientation="Horizontal"
-                        Visibility="{Binding ApplicationPublisher, Converter={StaticResource StringToVisibilityConverter}}"
-                        Margin="0 18 0 0">
-				<TextBlock Style="{StaticResource AboutTextNormalStyle}"
-                           Margin="12 0 5 0"
-                           Text="{Binding MainItemData.AppPublisherLabel}" />
-				<TextBlock Style="{StaticResource AboutTextNormalStyle}"
-                           Margin="0"
-                           Text="{Binding ApplicationPublisher}" />
-			</StackPanel>
-
-			<Grid Margin="0"
-                  Visibility="{Binding ApplicationDescription, Converter={StaticResource StringToVisibilityConverter}}">
+			<Grid Margin="0,20,0,0">
 				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="Auto" />
-					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="3*" />
+					<ColumnDefinition Width="4*" />
 				</Grid.ColumnDefinitions>
-				<TextBlock Style="{StaticResource AboutTextNormalStyle}"
-                           Margin="12 0 5 0"
+				<Grid.RowDefinitions>
+					<RowDefinition Height="auto" />
+					<RowDefinition Height="auto" />
+					<RowDefinition Height="auto" />
+					<RowDefinition Height="auto" />
+				</Grid.RowDefinitions>
+
+				<TextBlock Margin="0,6,0,0" Foreground="{ThemeResource PhoneAccentBrush}"
+						   Style="{StaticResource AboutTextNormalStyle}"
+							   Visibility="{Binding ApplicationPublisher, Converter={StaticResource StringToVisibilityConverter}}"
+                           Text="{Binding MainItemData.AppPublisherLabel}" />
+				<TextBlock Margin="0,6,0,0" Style="{StaticResource AboutTextNormalStyle}" Grid.Column="1"
+							   Visibility="{Binding ApplicationPublisher, Converter={StaticResource StringToVisibilityConverter}}"
+                           Text="{Binding ApplicationPublisher}" />
+
+
+				<TextBlock Margin="0,6,0,0" Grid.Row="1" Style="{StaticResource AboutTextNormalStyle}" Foreground="{ThemeResource PhoneAccentBrush}"
+							    Visibility="{Binding ApplicationDescription, Converter={StaticResource StringToVisibilityConverter}}"
                            Text="{Binding MainItemData.AppDescriptionLabel}" />
-				<TextBlock Grid.Column="1"
+				<TextBlock Margin="0,6,0,0" Grid.Row="1" Grid.Column="1"
+							    Visibility="{Binding ApplicationDescription, Converter={StaticResource StringToVisibilityConverter}}"
                            Style="{StaticResource AboutTextNormalStyle}"
-                           Margin="12 0 5 0"
                            Text="{Binding ApplicationDescription}"
                            TextWrapping="Wrap" />
-			</Grid>
 
-			<StackPanel Orientation="Horizontal"
-                        Visibility="{Binding ApplicationVersion, Converter={StaticResource StringToVisibilityConverter}}"
-                        Margin="0">
-				<TextBlock Style="{StaticResource AboutTextNormalStyle}"
-                           Margin="12 0 5 0"
+
+				<TextBlock Margin="0,6,0,0" Style="{StaticResource AboutTextNormalStyle}" Foreground="{ThemeResource PhoneAccentBrush}"
+						   Grid.Row="2"
+							   Visibility="{Binding ApplicationVersion, Converter={StaticResource StringToVisibilityConverter}}"
                            Text="{Binding MainItemData.AppVersionLabel}" FontFamily="Global User Interface" />
-				<TextBlock Style="{StaticResource AboutTextNormalHighlightedStyle}"
-                           Margin="12 0 5 0"
+				<TextBlock Margin="0,6,0,0" Style="{StaticResource AboutTextNormalStyle}"
+						   Grid.Row="2" Grid.Column="1"
+							   Visibility="{Binding ApplicationVersion, Converter={StaticResource StringToVisibilityConverter}}"
                            Text="{Binding ApplicationVersion}" />
-			</StackPanel>
+			</Grid>
 
 			<ItemsControl ItemsSource="{Binding Links}">
 				<ItemsControl.ItemTemplate>
 					<DataTemplate>
-						<StackPanel Orientation="Horizontal">
-							<TextBlock Text="{Binding Label}"
-                                       Style="{StaticResource AboutTextNormalStyle}"
-									   Margin="12 0 5 0"
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="3*" />
+								<ColumnDefinition Width="4*" />
+							</Grid.ColumnDefinitions>
+							<TextBlock Margin="0,6,0,0" Text="{Binding Label}"
+									   Style="{StaticResource AboutTextNormalStyle}"
+                                        Foreground="{ThemeResource PhoneAccentBrush}"
                                        VerticalAlignment="Center" />
-							<HyperlinkButton NavigateUri="{Binding NavigateUri}"
+							<HyperlinkButton Margin="0,6,0,0" Grid.Column="1" NavigateUri="{Binding NavigateUri}"
                                              HorizontalAlignment="Left"
-                                             Margin="12 0 5 0"
                                              Padding="0"
                                              Style="{StaticResource AboutHyperlinkButtonStyle}"
                                              Content="{Binding Content}" FontFamily="Global User Interface" />
-						</StackPanel>
+						</Grid>
 					</DataTemplate>
 				</ItemsControl.ItemTemplate>
 			</ItemsControl>
@@ -95,7 +102,7 @@
 			<Button HorizontalAlignment="Center"
                     Style="{StaticResource AboutButtonStyle}"
                     Visibility="{Binding MainItemData.AppReviewButtonContent, Converter={StaticResource StringToVisibilityConverter}}"
-                    Margin="0 0 0 0"
+                    Margin="0 12 0 0"
                     Tag="Review"
                     Content="{Binding MainItemData.AppReviewButtonContent}"
                     Command="{Binding ReviewCommand}" />
@@ -109,6 +116,7 @@
                     Command="{Binding BuyCommand}" />
 
 			<TextBlock Style="{StaticResource AboutTextNormalStyle}"
+					   Foreground="{ThemeResource PhoneAccentBrush}"
                        Visibility="{Binding AdditionalNotes, Converter={StaticResource StringToVisibilityConverter}}"
                        Margin="12 15 5 0"
                        Text="{Binding MainItemData.AppAdditionalNotesLabel}" />

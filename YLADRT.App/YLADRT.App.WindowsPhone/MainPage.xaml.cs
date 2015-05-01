@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using YLADRT.WindowsPhone;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -44,5 +45,12 @@ namespace YLADRT.App
             // If you are using the NavigationHelper provided by some templates,
             // this event is handled for you.
         }
+
+		private void Button_Click(object sender, RoutedEventArgs e)
+		{
+#if WINDOWS_PHONE_APP
+			Frame.Navigate(typeof(AboutPage));
+#endif
+		}
     }
 }
